@@ -23,6 +23,5 @@ jspm_packages/
 .vscode-test
 
 # ...
-# Senin eklemek istediklerin:
 out/
 .vscode/
