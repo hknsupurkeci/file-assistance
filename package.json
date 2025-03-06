@@ -1,0 +1,110 @@
+{
+    "name": "file-assistance",
+    "displayName": "File Assistant",
+    "description": "File-based software development assistant and task tracking system",
+    "icon": "resources/logo.png",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onView:fileAssistant.sidebarView"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "file-assistant",
+                    "title": "File Assistant",
+                    "icon": "resources/assistant.svg"
+                }
+            ]
+        },
+        "views": {
+            "file-assistant": [
+                {
+                    "id": "fileAssistant.sidebarView",
+                    "name": "File Assistant",
+                    "type": "webview"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "fileAssistant.addNote",
+                "title": "File Assistant: Add Note"
+            },
+            {
+                "command": "fileAssistant.addTodo",
+                "title": "File Assistant: Add Todo"
+            },
+            {
+                "command": "fileAssistant.completeTodo",
+                "title": "File Assistant: Complete Todo"
+            },
+            {
+                "command": "fileAssistant.addSnippet",
+                "title": "File Assistant: Add Code Snippet"
+            },
+            {
+                "command": "fileAssistant.refreshView",
+                "title": "File Assistant: Refresh View"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "fileAssistant.addNote",
+                    "group": "file-assistant"
+                },
+                {
+                    "command": "fileAssistant.addTodo",
+                    "group": "file-assistant"
+                },
+                {
+                    "command": "fileAssistant.addSnippet",
+                    "when": "editorHasSelection",
+                    "group": "file-assistant"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "fileAssistant.addNote",
+                "key": "ctrl+alt+n",
+                "mac": "cmd+alt+n"
+            },
+            {
+                "command": "fileAssistant.addTodo",
+                "key": "ctrl+alt+t",
+                "mac": "cmd+alt+t"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.2.0",
+        "@types/minimatch": "^5.1.2",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.60.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.0",
+        "@typescript-eslint/parser": "^5.30.0",
+        "eslint": "^8.18.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "typescript": "^4.7.4",
+        "vscode-test": "^1.6.1"
+    }
+}
